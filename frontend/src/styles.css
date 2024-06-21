@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+body.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+
+body.dark-mode .navbar, 
+body.dark-mode .sidebar, 
+body.dark-mode .note-card, 
+body.dark-mode .note-detail-container, 
+body.dark-mode button {
+  background-color: #333;
+  color: white;
+}
+
+body.dark-mode .navbar a, 
+body.dark-mode .sidebar a, 
+body.dark-mode .note-card a, 
+body.dark-mode .note-detail-container a, 
+body.dark-mode button a {
+  color: white;
+}
+
+body.dark-mode .navbar a:hover, 
+body.dark-mode .sidebar a:hover, 
+body.dark-mode .note-card a:hover, 
+body.dark-mode .note-detail-container a:hover, 
+body.dark-mode button:hover {
+  background-color: #555;
+  color: white;
+}

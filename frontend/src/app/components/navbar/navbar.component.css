@@ -1,0 +1,53 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 1rem;
+  color: white;
+  border-radius:5px;
+}
+
+.navbar-brand a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.navbar-search {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.navbar-search input {
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 4px;
+  height:8px;
+}
+
+.navbar-search fa-icon {
+  color: #333;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid white;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Space between the icon and the text */
+}
+
+.navbar-links a:hover {
+  background-color: white;
+  color: #333;
+}

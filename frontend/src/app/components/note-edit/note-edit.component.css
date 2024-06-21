@@ -1,18 +1,56 @@
-div {
-  margin-bottom: 16px;
+.note-edit-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-label {
-  font-weight: bold;
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
   display: block;
-  margin-bottom: 8px;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
 
-input, textarea {
+.form-group input, .form-group textarea {
   width: 100%;
-  padding: 8px;
-  margin-bottom: 16px;
+  padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 1em;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 0.5rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-actions button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-actions button:hover {
+  background-color: #555;
+}
+
+.form-actions button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }

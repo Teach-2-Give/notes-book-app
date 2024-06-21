@@ -1,0 +1,11 @@
+<div class="theme-toggle">
+  <fa-icon [icon]="faPalette" (click)="toggleColorPalette()"></fa-icon>
+  <fa-icon [icon]="isDarkMode ? faSun : faMoon" (click)="toggleDarkMode()"></fa-icon>
+
+  <div class="color-palette" *ngIf="isColorPaletteVisible">
+    <div class="color-option" style="background-color: #FF6347;" (click)="setColorTheme('#FF6347')"></div>
+    <div class="color-option" style="background-color: #1E90FF;" (click)="setColorTheme('#1E90FF')"></div>
+    <div class="color-option" style="background-color: #32CD32;" (click)="setColorTheme('#32CD32')"></div>
+    <div class="color-option" style="background-color: #FFD700;" (click)="setColorTheme('#FFD700')"></div>
+  </div>
+</div>

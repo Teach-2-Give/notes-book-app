@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NoteService } from '../../services/note.service';
-import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NotificationService } from '../../services/notification.service';
 
 @Component({
@@ -25,8 +25,8 @@ export class NoteEditComponent {
     private notificationService: NotificationService
   ) {
     this.noteForm = this.fb.group({
-      title: [''],
-      content: ['']
+      title: ['', Validators.required],
+      content: ['', Validators.required]
     });
 
     this.noteId = this.route.snapshot.params['id'];
@@ -40,6 +40,10 @@ export class NoteEditComponent {
   }
 
   onSubmit() {
+    if (this.noteForm.invalid) {
+      return;
+    }
+
     if (this.isEditMode) {
       this.noteService.updateNoteById(this.noteId, this.noteForm.value).subscribe(() => {
         this.router.navigate(['/']);

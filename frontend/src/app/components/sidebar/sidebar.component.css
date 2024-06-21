@@ -1,0 +1,49 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background-color: #333;
+  padding-top: 2rem;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 1.5rem 0;
+}
+
+.sidebar ul.bottom-links {
+  margin-top: auto; /* Pushes the bottom-links to the bottom */
+  padding-bottom: 1rem; /* Add some bottom padding */
+}
+
+.sidebar ul.bottom-links li {
+  margin-top: 1.5rem; /* Adds space between the bottom links and the rest */
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s;
+}
+
+.sidebar ul li a fa-icon {
+  margin-right: 0.5rem; /* Reduced margin between icon and text */
+}
+
+.sidebar ul li a:hover {
+  background-color: #575757;
+}

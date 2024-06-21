@@ -2,19 +2,25 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NoteService } from '../../services/note.service';
-import { NotificationService } from '../../services/notification.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faTrash, faEdit, faEye } from '@fortawesome/free-solid-svg-icons';
+import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
 
 @Component({
   selector: 'app-note-list',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FontAwesomeModule, DeleteConfirmationComponent],
   templateUrl: './note-list.component.html',
   styleUrls: ['./note-list.component.css']
 })
 export class NoteListComponent {
   notes: any[] = [];
+  faTrash = faTrash;
+  faEdit = faEdit;
+  faEye = faEye;
+  noteToDelete: number | null = null;
 
-  constructor(private noteService: NoteService, private notificationService: NotificationService) {
+  constructor(private noteService: NoteService) {
     this.fetchNotes();
   }
 
@@ -29,15 +35,25 @@ export class NoteListComponent {
     });
   }
 
-  deleteNote(id: number) {
-    this.noteService.deleteNoteById(id).subscribe({
-      next: () => {
-        this.fetchNotes();
-        this.notificationService.showMessage('Note deleted successfully!');
-      },
-      error: (error) => {
-        console.error('Error deleting note:', error);
-      }
-    });
+  confirmDelete(id: number) {
+    this.noteToDelete = id;
+  }
+
+  cancelDelete() {
+    this.noteToDelete = null;
+  }
+
+  deleteNote() {
+    if (this.noteToDelete !== null) {
+      this.noteService.deleteNoteById(this.noteToDelete).subscribe({
+        next: () => {
+          this.fetchNotes();
+          this.noteToDelete = null;
+        },
+        error: (error) => {
+          console.error('Error deleting note:', error);
+        }
+      });
+    }
   }
 }

@@ -1,5 +1,11 @@
-<div *ngIf="note">
-  <div class="note-title">{{ note.title }}</div>
+<div class="note-detail-container" *ngIf="note">
+  <div class="note-header">
+    <div class="note-title">{{ note.title }}</div>
+    <div class="note-date">{{ note.created_at | date:'shortDate' }}</div>
+  </div>
+  <hr class="note-divider">
   <div class="note-content">{{ note.content }}</div>
-  <button (click)="backToList()">Back to List</button>
+  <button (click)="backToList()">
+    <fa-icon [icon]="faArrowLeft"></fa-icon> Back to List
+  </button>
 </div>

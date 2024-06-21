@@ -1,10 +1,19 @@
-<div>
-  <button routerLink="/create">Create New Note</button>
+<div class="notes-container">
   <div *ngFor="let note of notes" class="note-card">
-    <div class="note-title">{{ note.title }}</div>
+    <div class="note-header">
+      <div class="note-title">{{ note.title }}</div>
+      <div class="note-date">{{ note.created_at | date:'shortDate' }}</div>
+    </div>
     <div class="note-content">{{ note.content }}</div>
-    <button [routerLink]="['/note', note.id]">View</button>
-    <button [routerLink]="['/edit', note.id]">Edit</button>
-    <button (click)="deleteNote(note.id)">Delete</button>
+    <div class="note-actions">
+      <button [routerLink]="['/note', note.id]">View</button>
+      <button [routerLink]="['/edit', note.id]"><fa-icon [icon]="faEdit"></fa-icon></button>
+      <button class="delete-button" (click)="confirmDelete(note.id)"><fa-icon [icon]="faTrash"></fa-icon></button>
+    </div>
   </div>
 </div>
+
+<app-delete-confirmation *ngIf="noteToDelete !== null" 
+                         (confirm)="deleteNote()" 
+                         (cancel)="cancelDelete()">
+</app-delete-confirmation>
