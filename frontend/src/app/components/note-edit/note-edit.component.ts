@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NoteService } from '../../services/note.service';
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-note-edit',
@@ -20,7 +21,8 @@ export class NoteEditComponent {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private noteService: NoteService
+    private noteService: NoteService,
+    private notificationService: NotificationService
   ) {
     this.noteForm = this.fb.group({
       title: [''],
@@ -41,11 +43,17 @@ export class NoteEditComponent {
     if (this.isEditMode) {
       this.noteService.updateNoteById(this.noteId, this.noteForm.value).subscribe(() => {
         this.router.navigate(['/']);
+        this.notificationService.showMessage('Note updated successfully!');
       });
     } else {
       this.noteService.createNote(this.noteForm.value).subscribe(() => {
         this.router.navigate(['/']);
+        this.notificationService.showMessage('Note created successfully!');
       });
     }
+  }
+
+  backToList() {
+    this.router.navigate(['/']);
   }
 }
