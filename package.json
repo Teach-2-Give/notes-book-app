@@ -1,0 +1,11 @@
+{
+  "name": "notes-app",
+  "version": "1.0.0",
+  "description": "This project provides an API for managing notes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "victorpreston",
+  "license": "ISC"
+}

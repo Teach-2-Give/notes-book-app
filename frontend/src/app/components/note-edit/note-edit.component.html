@@ -1,0 +1,14 @@
+<div>
+  <form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="title">Title</label>
+      <input id="title" formControlName="title">
+    </div>
+    <div>
+      <label for="content">Content</label>
+      <textarea id="content" formControlName="content"></textarea>
+    </div>
+    <button type="submit">{{ isEditMode ? 'Update' : 'Create' }} Note</button>
+    <button routerLink="/">Cancel</button>
+  </form>
+</div>

@@ -1,0 +1,17 @@
+.note-card {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.note-title {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.note-content {
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
