@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NoteService } from '../../services/note.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-note-list',
@@ -13,14 +14,13 @@ import { NoteService } from '../../services/note.service';
 export class NoteListComponent {
   notes: any[] = [];
 
-  constructor(private noteService: NoteService) {
+  constructor(private noteService: NoteService, private notificationService: NotificationService) {
     this.fetchNotes();
   }
 
   fetchNotes() {
     this.noteService.getAllNotes().subscribe({
       next: (data) => {
-        console.log('Fetched notes:', data); // Debugging log
         this.notes = data;
       },
       error: (error) => {
@@ -33,6 +33,7 @@ export class NoteListComponent {
     this.noteService.deleteNoteById(id).subscribe({
       next: () => {
         this.fetchNotes();
+        this.notificationService.showMessage('Note deleted successfully!');
       },
       error: (error) => {
         console.error('Error deleting note:', error);
