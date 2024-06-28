@@ -41,8 +41,7 @@ describe('NotificationService', () => {
             expect(messageAfterTimeout).toBeNull();
             done();
           });
-        }, 3000); /**
-        wait 3 seconds */
+        }, 3000); // Wait for 3 seconds
       }
     });
   });
